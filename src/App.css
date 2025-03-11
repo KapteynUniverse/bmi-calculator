@@ -1,0 +1,323 @@
+@font-face {
+  font-family: Inter;
+  src: local("Inter"), url("/assets/fonts/Inter-VariableFont_opsz,wght.ttf");
+  font-display: swap;
+}
+
+#root {
+  --linear-background-clr-start: #ffffff;
+  --linear-background-clr-end: #d3e3fa;
+  --linear-background-clr-position: right;
+  --limitations-card-clr: #ffffff;
+  --limitations-card-shadow-clr: #93b9e7f3;
+  --btn-background-clr: #6da8fa;
+  --btn-background-hover-clr: #428ef8;
+}
+/* 1. Use a more-intuitive box-sizing model */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+body {
+  /* 3. Add accessible line-height */
+  line-height: 1.5;
+  /* 4. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 5. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+/*
+  9. Create a root stacking context
+*/
+#root,
+#__next {
+  isolation: isolate;
+}
+body {
+  color: black;
+  font-family: Inter;
+}
+main,
+footer {
+  background: linear-gradient(
+    to var(--linear-background-clr-position),
+    var(--linear-background-clr-start) 10%,
+    var(--linear-background-clr-end) 90%
+  );
+}
+
+h1 {
+  font-size: clamp(2rem, 1.648rem + 1.502vw, 3rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 1.824rem + 0.751vw, 2.5rem);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 1.324rem + 0.751vw, 2rem);
+}
+p,
+form {
+  font-size: clamp(1rem, 0.824rem + 0.751vw, 1.5rem);
+}
+
+section {
+  padding: 1rem;
+  width: min(90%, 90rem);
+  margin-inline: auto;
+}
+
+section:has(form) {
+  max-width: 50rem;
+}
+
+form {
+  margin-inline: auto;
+  padding: 0.5rem;
+}
+
+input[type="number"] {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+input[type="radio"] {
+  margin-inline: 0.5rem;
+}
+
+label {
+  width: 100%;
+}
+
+input,
+label {
+  cursor: pointer;
+}
+
+label[for="metric"] {
+  text-align: end;
+}
+
+.bmi-calculator {
+  justify-content: center;
+}
+
+.bmi-calculator img {
+  margin-inline: auto;
+}
+
+.bmi-calculator__text {
+  text-align: center;
+}
+
+.bmi-calculator__form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bmi-calculator__form legend {
+  text-align: center;
+  font-weight: bold;
+}
+
+.bmi-calculator__form fieldset {
+  border: transparent;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.bmi-calculator__form fieldset:nth-of-type(1) {
+  justify-content: space-between;
+}
+
+.bmi-calculator__form fieldset:nth-of-type(2) {
+  flex-direction: column;
+}
+
+.bmi-results > div:not(:has(img)) {
+  padding: 0.5rem;
+}
+
+.bmi-results__img {
+  height: auto;
+  margin-inline: auto;
+}
+
+.bmi-recommendations > article {
+  padding: 0.5rem;
+}
+
+.bmi-limitations__card,
+.bmi-recommendations {
+  container: grid / inline-size;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  column-gap: 1rem;
+}
+
+@container grid (calc(15rem * 2 + 1rem) < width < calc(15rem * 3 + 2rem)) {
+  .bmi-recommendations > article:last-child:nth-child(odd) {
+    grid-column: span 2;
+  }
+  .bmi-limitations__card > article:last-child:nth-child(odd) {
+    grid-column: span 2;
+  }
+}
+@container grid (calc(15rem * 4 + 3rem) < width < calc(15rem * 5 + 4rem)) {
+  .bmi-limitations__card > article:last-child:nth-child(odd) {
+    grid-column: 2/4;
+  }
+}
+
+.bmi-recommendations__title,
+.bmi-limitations__text {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.bmi-limitations article {
+  background-color: var(--limitations-card-clr);
+  margin-top: 1rem;
+  box-shadow: 5px 5px 15px var(--limitations-card-shadow-clr);
+  border-radius: 10px;
+  padding: 0.5rem;
+}
+
+.connect__list {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.connect__list li {
+  list-style-type: none;
+}
+
+.connect p {
+  text-align: center;
+}
+
+/* Modal */
+dialog {
+  margin: auto;
+  padding: 2rem;
+  border-radius: 8px;
+  border: transparent;
+  opacity: 0;
+  transition: all 0.5s ease-in-out allow-discrete;
+}
+
+dialog[open] {
+  opacity: 1;
+}
+
+@starting-style {
+  dialog[open] {
+    opacity: 0;
+  }
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0);
+  transition: all 0.5s ease-in-out allow-discrete;
+}
+
+dialog[open]::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+@starting-style {
+  dialog[open]::backdrop {
+    background-color: rgba(0, 0, 0, 0);
+  }
+}
+
+button {
+  background: transparent;
+  border: transparent;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  background-color: var(--btn-background-clr);
+  color: black;
+  transition: background-color 0.3s ease-in-out;
+}
+
+button:hover,
+button:focus {
+  background-color: var(--btn-background-hover-clr);
+}
+button:focus {
+  outline: 2px solid black;
+}
+
+.description {
+  max-width: 40ch;
+  margin: 1rem 0;
+}
