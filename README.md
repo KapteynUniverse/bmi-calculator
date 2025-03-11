@@ -79,4 +79,4 @@ To run this project locally, follow these steps:
 - Asilcan Toper - [Portfolio](https://asilcantoper.netlify.app/)
 - Live Site URL: [bmi-calculator](https://kapteyn-bmi-calculator.netlify.app/)
 
-- [Go to top](#)
+- [Go to top](#overview)
