@@ -70,9 +70,9 @@ To run this project locally, follow these steps:
    cd bmi-calculator
    ```
 2. **Install dependencies:**
-   npm install
+   `npm install`
 3. **Start the development server:**
-   npm run dev
+   `npm run dev`
 
 ## Author
 
